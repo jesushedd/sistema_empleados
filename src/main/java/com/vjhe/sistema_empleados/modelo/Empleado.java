@@ -23,7 +23,7 @@ public class Empleado {
         Empleado.remuneracionExtraBase =remuneracionExtraBase;
     }
 
-    private int id;
+    private Integer id;
     private String nombre;
     private String apellido;
     private double remuneracion;
@@ -37,9 +37,15 @@ public class Empleado {
         this.remuneracionExtra = remuneracionExtra;
     }
 
+    public Empleado(int id, String nombre, String apellido, double remuneracion, double remuneracionExtra) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.remuneracion = remuneracion;
+        this.remuneracionExtra = remuneracionExtra;
+    }
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -84,5 +90,16 @@ public class Empleado {
             throw new IllegalArgumentException("Remuneración negativa");
         }
         this.remuneracionExtra = remuneracionExtra;
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", remuneracion=" + remuneracion +
+                ", remuneracionExtra=" + remuneracionExtra +
+                '}';
     }
 }
