@@ -1,5 +1,7 @@
 package com.vjhe.sistema_empleados.modelo;
 
+import java.util.Objects;
+
 public class Empleado {
 
     private static double remuneracionBase = 20.0;
@@ -7,6 +9,18 @@ public class Empleado {
 
     public static Empleado EMPLEADO_BASE(String nombre, String apellido){
         return new Empleado(nombre, apellido,remuneracionBase, remuneracionExtraBase );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Empleado empleado = (Empleado) o;
+        return Objects.equals(id, empleado.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     public static void setRemunuracionBase(double remuneracionBase){
