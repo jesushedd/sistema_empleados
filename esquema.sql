@@ -4,4 +4,13 @@ CREATE TABLE empleados(
 	apellido VARCHAR(100) NOT NULL,
 	r_hora DECIMAL(6,2) NOT NULL,
 	r_extra DECIMAL(6,2) NOT NULL
+);
+
+CREATE TABLE jornadas(
+	
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	empleado_id INT NOT NULL,
+	entrada DATETIME NOT NULL, 
+	salida DATETIME,
+	FOREIGN KEY (empleado_id) REFERENCES empleados(id)
 )
