@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Empleado {
 
-    private static double remuneracionBase = 20.0;
-    private static double remuneracionExtraBase = 30.0;
 
-    public static Empleado EMPLEADO_BASE(String nombre, String apellido){
-        return new Empleado(nombre, apellido,remuneracionBase, remuneracionExtraBase );
+    static Empleado empleadoTest(String nombre, String apellido){
+        final double remuneracionEstandar = 20;
+        final double remuneracionExtra = 30;
+        return new Empleado(nombre, apellido,remuneracionEstandar, remuneracionExtra );
     }
 
     @Override
@@ -23,19 +23,7 @@ public class Empleado {
         return Objects.hashCode(id);
     }
 
-    public static void setRemunuracionBase(double remuneracionBase){
-        if (remuneracionBase <= 0){
-            throw new IllegalArgumentException("Remuneración negativa");
-        }
-        Empleado.remuneracionBase = remuneracionBase;
-    }
 
-    public static void setRemuneracionExtraBase(double remuneracionExtraBase){
-        if (remuneracionExtraBase <= 0){
-            throw new IllegalArgumentException("Remuneración negativa");
-        }
-        Empleado.remuneracionExtraBase =remuneracionExtraBase;
-    }
 
     private Integer id;
     private String nombre;
