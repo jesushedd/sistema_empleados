@@ -5,22 +5,38 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class Jornada implements Comparable<Jornada>{
+    public static final int DURACION_ESTANDAR = 8;
+
     private Integer id_jornada;
     private Empleado empleado;
     private LocalDateTime entrada;
     private LocalDateTime salida;
+    private double remuneracionJornada;
 
     public Jornada(Empleado empleado, LocalDateTime entrada, LocalDateTime salida) {
+        if (empleado == null || entrada == null){
+            throw new IllegalArgumentException("Empleado ni entrada pueden ser null");
+        }
+
         this.empleado = empleado;
-        this.entrada = entrada == null ? null : entrada.truncatedTo(ChronoUnit.SECONDS);
+        this.entrada = entrada.truncatedTo(ChronoUnit.SECONDS);
         this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);
+        validarIntervalo();
+        calcularRemuneracion();
+
     }
 
     public Jornada(Integer id_jornada, Empleado empleado, LocalDateTime entrada, LocalDateTime salida) {
+        if (empleado == null || entrada == null){
+            throw new IllegalArgumentException("Empleado ni entrada pueden ser null");
+        }
+
         this.id_jornada = id_jornada;
         this.empleado = empleado;
-        this.entrada = entrada == null ? null : entrada.truncatedTo(ChronoUnit.SECONDS);
+        this.entrada = entrada.truncatedTo(ChronoUnit.SECONDS);
         this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);
+        validarIntervalo();
+        calcularRemuneracion();
     }
 
     public Empleado getEmpleado() {
@@ -36,7 +52,12 @@ public class Jornada implements Comparable<Jornada>{
     }
 
     public void setEntrada(LocalDateTime entrada) {
-        this.entrada = entrada == null ? null : entrada.truncatedTo(ChronoUnit.SECONDS);;
+        if ( entrada == null){
+            throw new IllegalArgumentException("entrada no pueden ser null");
+        }
+
+        validarIntervalo();
+        calcularRemuneracion();
     }
 
     public LocalDateTime getSalida() {
@@ -44,11 +65,15 @@ public class Jornada implements Comparable<Jornada>{
     }
 
     public void setSalida(LocalDateTime salida) {
-        this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);;
+        this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);
+        validarIntervalo();
+        calcularRemuneracion();
     }
 
     public void registrarSalida(){
-        this.salida = LocalDateTime.now();
+        this.salida = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        validarIntervalo();
+        calcularRemuneracion();
     }
 
     public void setId_jornada(Integer id_jornada) {
@@ -64,7 +89,18 @@ public class Jornada implements Comparable<Jornada>{
     }
 
     public boolean esActiva(){
-        return entrada != null & salida == null;
+        return entrada != null && salida == null;
+    }
+
+    private void validarIntervalo(){
+        if (salida == null) return;
+        if (entrada.isAfter(salida)){
+            throw new  IllegalArgumentException("La hora de salida es anterior a la entrada");
+        }
+    }
+
+    public double getRemuneracionJornada() {
+        return remuneracionJornada;
     }
 
     @Override
@@ -92,5 +128,18 @@ public class Jornada implements Comparable<Jornada>{
                 ", entrada=" + entrada +
                 ", salida=" + salida +
                 '}';
+    }
+
+    private void calcularRemuneracion(){
+        if (salida == null) return;
+        if (entrada == null) throw  new IllegalStateException("No existe horario de entrada");
+        long horas = ChronoUnit.HOURS.between(entrada, salida);
+        long horasExtra = Math.max(horas - DURACION_ESTANDAR, 0);
+        long horasEstandar = Math.min(horas, DURACION_ESTANDAR);
+        double remuneracionEstandar = horasEstandar * empleado.getRemuneracionHora();
+        double remuneracionExtra = horasExtra * empleado.getRemuneracionHoraExtra();
+
+
+        this.remuneracionJornada = remuneracionEstandar  + remuneracionExtra;
     }
 }
