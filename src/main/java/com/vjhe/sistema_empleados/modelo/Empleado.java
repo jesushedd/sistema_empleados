@@ -40,23 +40,23 @@ public class Empleado {
     private Integer id;
     private String nombre;
     private String apellido;
-    private double remuneracion;
-    private double remuneracionExtra;
+    private double remuneracionHora;
+    private double remuneracionHoraExtra;
 
 
     public Empleado(String nombre, String apellido, double remuneracion, double remuneracionExtra) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.remuneracion = remuneracion;
-        this.remuneracionExtra = remuneracionExtra;
+        this.remuneracionHora = remuneracion;
+        this.remuneracionHoraExtra = remuneracionExtra;
     }
 
     public Empleado(int id, String nombre, String apellido, double remuneracion, double remuneracionExtra) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.remuneracion = remuneracion;
-        this.remuneracionExtra = remuneracionExtra;
+        this.remuneracionHora = remuneracion;
+        this.remuneracionHoraExtra = remuneracionExtra;
     }
 
     public Integer getId() {
@@ -83,27 +83,27 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public double getRemuneracion() {
-        return remuneracion;
+    public double getRemuneracionHora() {
+        return remuneracionHora;
     }
 
-    public void setRemuneracion(double remuneracion) {
-        if (remuneracion <= 0){
+    public void setRemuneracionHora(double remuneracionHora) {
+        if (remuneracionHora <= 0){
             throw new IllegalArgumentException("Remuneración negativa");
         }
-        this.remuneracion = remuneracion;
+        this.remuneracionHora = remuneracionHora;
     }
 
-    public double getRemuneracionExtra() {
-        return remuneracionExtra;
+    public double getRemuneracionHoraExtra() {
+        return remuneracionHoraExtra;
     }
 
-    public void setRemuneracionExtra(double remuneracionExtra) {
+    public void setRemuneracionHoraExtra(double remuneracionHoraExtra) {
 
-        if (remuneracionExtra <= 0){
+        if (remuneracionHoraExtra <= 0){
             throw new IllegalArgumentException("Remuneración negativa");
         }
-        this.remuneracionExtra = remuneracionExtra;
+        this.remuneracionHoraExtra = remuneracionHoraExtra;
     }
 
     @Override
@@ -112,8 +112,8 @@ public class Empleado {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", remuneracion=" + remuneracion +
-                ", remuneracionExtra=" + remuneracionExtra +
+                ", remuneracion=" + remuneracionHora +
+                ", remuneracionExtra=" + remuneracionHoraExtra +
                 '}';
     }
 }

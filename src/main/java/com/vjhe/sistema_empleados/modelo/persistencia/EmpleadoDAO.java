@@ -16,8 +16,8 @@ public class EmpleadoDAO {
         try (PreparedStatement statement =  ConexionDB.getConexion().prepareStatement(query)){
             statement.setString(1, empleado.getNombre());
             statement.setString(2, empleado.getApellido());
-            statement.setDouble(3, empleado.getRemuneracion());
-            statement.setDouble(4, empleado.getRemuneracionExtra());
+            statement.setDouble(3, empleado.getRemuneracionHora());
+            statement.setDouble(4, empleado.getRemuneracionHoraExtra());
             statement.execute();
 
         } catch (SQLException e) {
@@ -51,8 +51,8 @@ public class EmpleadoDAO {
 
             statement.setString(1, empleado.getNombre());
             statement.setString(2, empleado.getApellido());
-            statement.setDouble(3, empleado.getRemuneracion());
-            statement.setDouble(4, empleado.getRemuneracionExtra());
+            statement.setDouble(3, empleado.getRemuneracionHora());
+            statement.setDouble(4, empleado.getRemuneracionHoraExtra());
             statement.setInt(5, empleado.getId());
 
             if (statement.executeUpdate() != 1){
