@@ -1,6 +1,7 @@
 package com.vjhe.sistema_empleados.modelo;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class Jornada implements Comparable<Jornada>{
@@ -11,15 +12,15 @@ public class Jornada implements Comparable<Jornada>{
 
     public Jornada(Empleado empleado, LocalDateTime entrada, LocalDateTime salida) {
         this.empleado = empleado;
-        this.entrada = entrada;
-        this.salida = salida;
+        this.entrada = entrada == null ? null : entrada.truncatedTo(ChronoUnit.SECONDS);
+        this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);
     }
 
     public Jornada(Integer id_jornada, Empleado empleado, LocalDateTime entrada, LocalDateTime salida) {
         this.id_jornada = id_jornada;
         this.empleado = empleado;
-        this.entrada = entrada;
-        this.salida = salida;
+        this.entrada = entrada == null ? null : entrada.truncatedTo(ChronoUnit.SECONDS);
+        this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);
     }
 
     public Empleado getEmpleado() {
@@ -35,7 +36,7 @@ public class Jornada implements Comparable<Jornada>{
     }
 
     public void setEntrada(LocalDateTime entrada) {
-        this.entrada = entrada;
+        this.entrada = entrada == null ? null : entrada.truncatedTo(ChronoUnit.SECONDS);;
     }
 
     public LocalDateTime getSalida() {
@@ -43,7 +44,7 @@ public class Jornada implements Comparable<Jornada>{
     }
 
     public void setSalida(LocalDateTime salida) {
-        this.salida = salida;
+        this.salida = salida == null ? null : salida.truncatedTo(ChronoUnit.SECONDS);;
     }
 
     public void registrarSalida(){
