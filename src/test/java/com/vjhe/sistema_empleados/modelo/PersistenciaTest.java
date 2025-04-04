@@ -1,7 +1,5 @@
-package sistema_empleados.persistencia;
+package com.vjhe.sistema_empleados.modelo;
 
-import com.vjhe.sistema_empleados.modelo.Empleado;
-import com.vjhe.sistema_empleados.modelo.Jornada;
 import com.vjhe.sistema_empleados.modelo.persistencia.ConexionDB;
 import com.vjhe.sistema_empleados.modelo.persistencia.EmpleadoDAO;
 import com.vjhe.sistema_empleados.modelo.persistencia.JornadaDAO;

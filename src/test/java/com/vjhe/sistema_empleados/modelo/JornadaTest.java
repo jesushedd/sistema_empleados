@@ -1,7 +1,6 @@
-package sistema_empleados.modelo;
+package com.vjhe.sistema_empleados.modelo;
 
-import com.vjhe.sistema_empleados.modelo.Empleado;
-import com.vjhe.sistema_empleados.modelo.Jornada;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
