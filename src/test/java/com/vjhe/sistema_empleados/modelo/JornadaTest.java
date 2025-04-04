@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 public class JornadaTest {
-    Empleado empleadoTest = Empleado.EMPLEADO_BASE("nombreTest", "ApellidoTest");
+    Empleado empleadoTest = Empleado.empleadoTest("nombreTest", "ApellidoTest");
 
     @Test
     public void testCalculoRemuneraciones(){

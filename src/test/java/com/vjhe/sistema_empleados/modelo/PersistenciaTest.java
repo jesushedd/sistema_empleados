@@ -33,7 +33,7 @@ public class PersistenciaTest {
     }
     @Test
     public void  testGuardarJornadas(){
-        var empleado6 = Empleado.EMPLEADO_BASE("nombre6", "apellido6");
+        var empleado6 = Empleado.empleadoTest("nombre6", "apellido6");
         empleado6.setId(6);
         empleadoDAO.guardar(empleado6);
         List<Jornada> jornadasExpected = new ArrayList<>();
@@ -58,11 +58,11 @@ public class PersistenciaTest {
 
     private List<Empleado> crearListaEmpleados(){
         //instanciar lista de  empleados
-        List<Empleado> empleados = List.of( Empleado.EMPLEADO_BASE("nombre1", "apellido1"),
-                Empleado.EMPLEADO_BASE("nombre2", "apellido2"),
-                Empleado.EMPLEADO_BASE("nombre3", "apellido3"),
-                Empleado.EMPLEADO_BASE("nombre4", "apellido4"),
-                Empleado.EMPLEADO_BASE("nombre5", "apellido5"));
+        List<Empleado> empleados = List.of( Empleado.empleadoTest("nombre1", "apellido1"),
+                Empleado.empleadoTest("nombre2", "apellido2"),
+                Empleado.empleadoTest("nombre3", "apellido3"),
+                Empleado.empleadoTest("nombre4", "apellido4"),
+                Empleado.empleadoTest("nombre5", "apellido5"));
 
         //asignar id de 1 a 5 a los empleados instanciados previamente
         for (int i = 0, id = i + 1; i < empleados.size() ; i++, id++) {
