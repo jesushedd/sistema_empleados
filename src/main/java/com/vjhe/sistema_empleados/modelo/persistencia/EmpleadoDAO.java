@@ -1,6 +1,6 @@
 package com.vjhe.sistema_empleados.modelo.persistencia;
 
-import com.vjhe.sistema_empleados.modelo.Empleado;
+import com.vjhe.sistema_empleados.modelo.entidades.Empleado;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

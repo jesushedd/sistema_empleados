@@ -1,4 +1,4 @@
-package com.vjhe.sistema_empleados.modelo;
+package com.vjhe.sistema_empleados.modelo.entidades;
 
 
 import org.junit.jupiter.api.Assertions;

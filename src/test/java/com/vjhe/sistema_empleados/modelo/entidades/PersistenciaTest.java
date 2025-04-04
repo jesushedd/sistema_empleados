@@ -1,4 +1,4 @@
-package com.vjhe.sistema_empleados.modelo;
+package com.vjhe.sistema_empleados.modelo.entidades;
 
 import com.vjhe.sistema_empleados.modelo.persistencia.ConexionDB;
 import com.vjhe.sistema_empleados.modelo.persistencia.EmpleadoDAO;
