@@ -133,7 +133,12 @@ public class Jornada implements Comparable<Jornada>{
     private void calcularRemuneracion(){
         if (salida == null) return;
         if (entrada == null) throw  new IllegalStateException("No existe horario de entrada");
+
+
         long horas = ChronoUnit.HOURS.between(entrada, salida);
+        long minutos = ChronoUnit.MINUTES.between(entrada,salida);
+        minutos = minutos % 60;
+        horas = minutos >= 30 ? horas + 1 : horas;
         long horasExtra = Math.max(horas - DURACION_ESTANDAR, 0);
         long horasEstandar = Math.min(horas, DURACION_ESTANDAR);
         double remuneracionEstandar = horasEstandar * empleado.getRemuneracionHora();
