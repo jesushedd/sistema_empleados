@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" fx:controller="com.vjhe.sistema_empleados.controladores.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vjhe.sistema_empleados.controladores.MainController">
    <children>
       <HBox prefHeight="748.0" prefWidth="1337.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -47,9 +47,9 @@
             </StackPane>
             <VBox fx:id="seccion" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="titulo_seccion" alignment="BASELINE_LEFT" text="Label">
+                  <Label fx:id="titulo_seccion" alignment="BASELINE_LEFT" textAlignment="CENTER" wrapText="true">
                      <font>
-                        <Font size="64.0" />
+                        <Font size="48.0" />
                      </font>
                   </Label>
                </children>

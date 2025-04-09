@@ -25,7 +25,7 @@ public class JornadaDAO {
     }
 
     public List<Jornada> listarPorEmpleado(Empleado empleado){
-        String query = "SELECT id, entrada, salida FROM  jornadas WHERE empleado_id = ?";
+        String query = "SELECT id, entrada, salida FROM  jornadas WHERE empleado_id = ? ORDER BY entrada DESC" ;
 
         List<Jornada> jornadasEmpleado = new ArrayList<>();
 

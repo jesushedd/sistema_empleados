@@ -2,7 +2,7 @@ package com.vjhe.sistema_empleados.modelo.entidades;
 
 import java.util.Objects;
 
-public class Empleado {
+public class Empleado implements Comparable<Empleado>{
 
 
     static Empleado empleadoTest(String nombre, String apellido){
@@ -103,5 +103,18 @@ public class Empleado {
                 ", remuneracion=" + remuneracionHora +
                 ", remuneracionExtra=" + remuneracionHoraExtra +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Empleado otroEmpleado) {
+        int sub = this.apellido.compareTo(otroEmpleado.apellido);
+        if (sub == 0){
+            sub = this.nombre.compareTo(otroEmpleado.nombre);
+        }
+        // Manejo explícito de IDs nulos
+        if (this.id == null && otroEmpleado.id == null) return 0;
+        if (this.id == null) return -1;
+        if (otroEmpleado.id == null) return 1;
+        return this.id.compareTo(otroEmpleado.id);
     }
 }

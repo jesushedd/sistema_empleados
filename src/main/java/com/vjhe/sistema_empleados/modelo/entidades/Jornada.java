@@ -76,6 +76,12 @@ public class Jornada implements Comparable<Jornada>{
         calcularRemuneracion();
     }
 
+    public void registrarSalida(LocalDateTime salida){
+        this.salida = salida.truncatedTo(ChronoUnit.SECONDS);
+        validarIntervalo();
+        calcularRemuneracion();
+    }
+
     public void setId_jornada(Integer id_jornada) {
         this.id_jornada = id_jornada;
     }
@@ -105,7 +111,7 @@ public class Jornada implements Comparable<Jornada>{
 
     @Override
     public int compareTo(Jornada jornada) {
-        return this.entrada.compareTo(jornada.entrada);
+        return jornada.entrada.compareTo(this.entrada);
     }
 
     @Override
