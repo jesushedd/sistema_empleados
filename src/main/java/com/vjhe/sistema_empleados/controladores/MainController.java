@@ -2,13 +2,11 @@ package com.vjhe.sistema_empleados.controladores;
 
 import com.vjhe.sistema_empleados.modelo.ModelView;
 import com.vjhe.sistema_empleados.modelo.Seccion;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 
-
-public class MainController {
+public class MainController extends Controller {
     @FXML
     public Button botonSeccionHorarios;
     @FXML
@@ -16,11 +14,6 @@ public class MainController {
     @FXML
     public Button botonSeccionRemuneraciones;
 
-    private ModelView model;
-
-    public void setModel(ModelView model){
-        this.model = model;
-    }
 
     public void initialize(){
         configurarBotones();
