@@ -1,5 +1,6 @@
 package com.vjhe.sistema_empleados;
 
+import com.vjhe.sistema_empleados.controladores.Controller;
 import com.vjhe.sistema_empleados.controladores.MainController;
 import com.vjhe.sistema_empleados.modelo.ModelView;
 import com.vjhe.sistema_empleados.modelo.Seccion;
@@ -71,12 +72,15 @@ public class HelloApplication extends Application {
             anclajeSeccion.add(nuevaVista);
         });
 
+
     }
 
 
     private void cargarVistaSeccion(String fxmlFile, Seccion seccion) throws IOException {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
         Node root = loader.load();
+        Controller controlador = loader.getController();
+        if (controlador != null)  controlador.setModel(model);
         vistaSecciones.put(seccion, root);
     }
 
