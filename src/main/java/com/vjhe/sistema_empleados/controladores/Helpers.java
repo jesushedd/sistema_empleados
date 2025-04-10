@@ -18,7 +18,7 @@ public class Helpers {
 
     public static void restringirEntradaAlfabetica(TextField campo){
         campo.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("^[\\p{L} '-]*$")) campo.setText(oldValue);
+            if (!newValue.matches("^(?!\\s)[\\p{L} '-]*$")) campo.setText(oldValue);
         });
     }
 }
