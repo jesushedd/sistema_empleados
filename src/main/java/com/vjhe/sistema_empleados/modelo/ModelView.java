@@ -1,20 +1,26 @@
 package com.vjhe.sistema_empleados.modelo;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class ModelView {
-    private ObjectProperty<Seccion> seccionActivaProperty = new SimpleObjectProperty<>();
+    private SistemaEmpleados sistemaEmpleados;
+    private ObjectProperty<Seccion> seccionActiva = new SimpleObjectProperty<>();
     private StringProperty tituloSeccionActual = new SimpleStringProperty();
+    private DoubleProperty remuneracion = new SimpleDoubleProperty();
+    private DoubleProperty remuneracionExtra = new SimpleDoubleProperty();
 
-    public void setSeccionActivaProperty(Seccion seccion) {
-        this.seccionActivaProperty.set(seccion);
+    public ModelView(){
+        this.sistemaEmpleados = new SistemaEmpleados();
+        this.remuneracion.set(sistemaEmpleados.getRemuneracionBase());
+        this.remuneracionExtra.set(sistemaEmpleados.getRemuneracionExtraBase());
+    }
+
+    public void setSeccionActiva(Seccion seccion) {
+        this.seccionActiva.set(seccion);
     }
 
     public ObjectProperty<Seccion> seccionActivaProperty(){
-        return seccionActivaProperty;
+        return seccionActiva;
     }
 
     public void setTituloSeccionActual(String tituloSeccionActual) {
@@ -27,6 +33,27 @@ public class ModelView {
     }
 
     public Seccion getSeccionActiva(){
-        return seccionActivaProperty.get();
+        return seccionActiva.get();
+    }
+
+    public double getRemuneracion() {
+        return remuneracion.get();
+    }
+
+    public DoubleProperty remuneracionProperty() {
+        return remuneracion;
+    }
+
+    public double getRemuneracionExtra() {
+        return remuneracionExtra.get();
+    }
+
+    public DoubleProperty remuneracionExtraProperty() {
+        return remuneracionExtra;
+    }
+
+    public void crearEmpleado(String nombre, String apellido,double remuneracio, double remunreacionExtra){
+        sistemaEmpleados.crearEmpleado(nombre,apellido,remuneracio,remunreacionExtra);
+        sistemaEmpleados.sincronizarConDB();
     }
 }
